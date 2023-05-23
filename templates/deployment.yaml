@@ -33,7 +33,17 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          args: ["--connection",{{ .Values.connection|quote }},"--enhance-graphiql","--watch","-m",{{ .Values.max_pool_size|quote }},"-j"]
+          args: [
+            "--connection",
+            {{ .Values.connection|quote }},
+            "--enhance-graphiql",
+            {{- if .Values.watch }}
+            "--watch",
+            {{- end }}
+            "-m",
+            {{ .Values.max_pool_size|quote }},
+            "-j"
+          ]
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

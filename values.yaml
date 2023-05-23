@@ -16,6 +16,7 @@ fullnameOverride: ""
 
 connection: postgres://
 max_pool_size: 2
+watch: false
 
 
 serviceAccount:
