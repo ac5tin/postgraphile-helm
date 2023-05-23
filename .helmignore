@@ -21,3 +21,8 @@
 .idea/
 *.tmproj
 .vscode/
+
+
+# values
+values.prod.yml
+values.prod.yml
